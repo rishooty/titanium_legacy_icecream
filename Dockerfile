@@ -2,7 +2,7 @@
 FROM bitnami/minideb
 
 # Dockerfile author / maintainer
-MAINTAINER Nicholas Ricciuti <nrishooty@redlineadvantage.com>
+MAINTAINER Nicholas Ricciuti <rishooty@gmail.com>
 
 # Silence stdin errors
 ENV DEBIAN_FRONTEND noninteractive
