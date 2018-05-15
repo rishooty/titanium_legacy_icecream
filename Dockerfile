@@ -50,9 +50,12 @@ RUN wget -q http://dl-ssl.google.com/android/repository/tools_r25.2.5-linux.zip 
 	rm -f tools_r25.2.5-linux.zip
 
 # Install Android SDK 19 for SDK Tools 25
+RUN mkdir /home/docker/.android
 ADD insecure_shared_adbkey /root/.android/adbkey
 ADD insecure_shared_adbkey.pub /root/.android/adbkey.pub
-RUN mkdir /home/docker/.android && touch /home/docker/.android/repositories.cfg && \
+ADD insecure_shared_adbkey /home/docker/.android/adbkey
+ADD insecure_shared_adbkey.pub /home/docker/.android/adbkey.pub
+RUN touch /home/docker/.android/repositories.cfg && \
 	mkdir -p SDK/licenses && echo -e "\nd56f5187479451eabf01fb78af6dfcb131a6481e" > "SDK/licenses/android-sdk-license" && \
 	SDK/tools/bin/sdkmanager "platforms;android-19" "platform-tools" "build-tools;27.0.3"
 
