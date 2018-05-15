@@ -17,7 +17,7 @@ Any version of docker
 Open your terminal and run
 
 1. ```sudo docker pull rishooty/titanium_legacy_icecream```
-2. ```sudo docker run -u $UID:$GID -d --privileged --net host -v /dev/bus/usb:/dev/bus/usb --name legacyProject titanium_legacy_icecream```
+2. ```sudo docker run -u $UID:$GID -d --privileged --net host -v /dev/bus/usb:/dev/bus/usb --name <NAME_OF_PROJECT> titanium_legacy_icecream```
 
 This creates a container that:
 
