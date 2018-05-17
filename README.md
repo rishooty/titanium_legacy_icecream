@@ -17,11 +17,11 @@ Any version of docker
 Open your terminal and run
 ## Linux
 1. ```sudo docker pull rishooty/titanium_legacy_icecream```
-2. ```sudo docker run -u $UID:$GID -d --privileged --net host -v /dev/bus/usb:/dev/bus/usb --name <NAME_OF_PROJECT> titanium_legacy_icecream```
+2. ```sudo docker run -u $UID:$GID -d --privileged --net host -v /dev/bus/usb:/dev/bus/usb --name <NAME_OF_PROJECT> rishooty/titanium_legacy_icecream```
 
 ## Windows
 1. ```docker pull rishooty/titanium_legacy_icecream```
-2. ```docker run -d --privileged --net host --name <NAME_OF_PROJECT> titanium_legacy_icecream```
+2. ```docker run -d --name <NAME_OF_PROJECT> rishooty/titanium_legacy_icecream```
 
 This creates a container that:
 
@@ -32,26 +32,26 @@ This creates a container that:
 ### Building
 ## Linux
 1. ```git clone https://github.com/rishooty/titanium_legacy_icecream.git```
-2. ```sudo docker build -t titanium_legacy_icecream <PATH_TO_REPO>```
+2. ```sudo docker build -t rishooty/titanium_legacy_icecream <PATH_TO_REPO>```
 
 ## Windows
 1. ```git clone https://github.com/rishooty/titanium_legacy_icecream.git```
-2. ```docker build -t titanium_legacy_icecream <PATH_TO_REPO>```
+2. ```docker build -t rishooty/titanium_legacy_icecream <PATH_TO_REPO>```
 
 ### Usage
 ## Linux
-```sudo docker run --privileged --rm --net host -v <TITANIUM_PROJECT_PATH>:/home/docker/Code titanium_legacy_icecream <COMMANDS_TO_RUN>```
+```sudo docker run --privileged --rm --net host -v <TITANIUM_PROJECT_PATH>:/home/docker/Code rishooty/titanium_legacy_icecream <COMMANDS_TO_RUN>```
 ## Windows
-```docker run --privileged --rm --net host -v <TITANIUM_PROJECT_PATH>:/home/docker/Code titanium_legacy_icecream <COMMANDS_TO_RUN>```
+```docker run --rm -v <TITANIUM_PROJECT_PATH>:/home/docker/Code rishooty/titanium_legacy_icecream <COMMANDS_TO_RUN>```
 
 Due to the way fixuid works, titanium can't be set as an entrypoint. This means it will take any argument passed to it. You can check the inner workings of the box with ease if you wish.
 
 Of course, the real reason we are here is to compile legacy titanium projects. So typical usage would be:
 
 ## Linux
-```sudo docker run --privileged --rm --net host -v <TITANIUM_PROJECT_PATH>:/home/docker/Code titanium_legacy_icecream titanium build --device-id=<DEVICE_ID> --platform=android --target=device --project-dir=Code```
+```sudo docker run --privileged --rm --net host -v <TITANIUM_PROJECT_PATH>:/home/docker/Code rishooty/titanium_legacy_icecream titanium build --device-id=<DEVICE_ID> --platform=android --target=device --project-dir=Code```
 ## Windows
-```sudo docker run --privileged --rm --net host -v <TITANIUM_PROJECT_PATH>:/home/docker/Code titanium_legacy_icecream titanium build --build-only --platform=android --target=device --project-dir=Code```
+```docker run --rm -v <TITANIUM_PROJECT_PATH>:/home/docker/Code rishooty/titanium_legacy_icecream titanium build --build-only --platform=android --target=device --project-dir=Code```
 
 This will build your project and send it straight to the emulator or phone you specified. If you only want to build apks, you can use *--build-only* instead of *--device_id*. In the case of Windows, this is your only option. This is because **usb passthrough isn't possible on either version of Windows docker**. In either case, you'll find your built apks in <TITANIUM_PROJECT_PATH>/build/android/bin.
 
